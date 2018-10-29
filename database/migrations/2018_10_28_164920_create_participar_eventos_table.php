@@ -11,8 +11,8 @@ class CreateParticiparEventosTable extends Migration
      *
      * @return void
      */
-    public function up()
-    {
+    public function up(){
+    
         Schema::create('participar_eventos', function (Blueprint $table) {
            /*O identificador do registro*/
             $table->increments('id');
@@ -32,8 +32,7 @@ class CreateParticiparEventosTable extends Migration
             /* booleano para saber se o cara está no evento*/            
             $table->boolean('checking');
             
-            
-
+            $table->timestamps();
         });
     }
 
