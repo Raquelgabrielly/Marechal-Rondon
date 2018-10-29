@@ -39,11 +39,12 @@
 						<div>Inicio 	: {{$evento->inicio_evento}}</div>
 						<div>Fim 		: {{$evento->fim_evento}}</div>
 				<!-- Lista o nome do Autor que está na tabela user o atributo name-->			
-						<div>Autor 	: {{$evento->user->name}}</div>	
+						<div>Autor 	: {{$evento->user_id}}</div>	
 			<!-- Pega a função de app\Providers\AuthServiceProvider.php
 				 Caso esteja de acordo com o provider ele vai fazer aparecer o que está dentro-->	
 				@can('update-evento', $evento)
 				<a href="{{url("/evento/{$evento->id}/update")}}">editar</a><br>
+				<a href="{{url("/evento/{$evento->id}/upando")}}">participar</a><br>
 			<form method="POST" action="{{route('evento.destroy', $evento->id)}}">
 					<input type="hidden" name="_method" value="DELETE">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">

@@ -12,8 +12,11 @@ Route::resource('evento', 'EventoController');
 /* rota tradicional do método Auth*/
 Auth::routes();
 
-/* Chamar o a função update*/
+/* Chamar  a função update*/
 Route::get('/evento/{id}/update', 'HomeController@update');
+
+/* Chamar a função upando*/
+Route::get('/evento/{id}/upando', 'HomeController@upando');
 
 /* Vai para a função index quando for para o home*/
 Route::get('/home', 'HomeController@index')->name('home');

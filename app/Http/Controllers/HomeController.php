@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Evento;
-use Gate;
+use App\ParticiparEvento;
+use Gate;
 
 class HomeController extends Controller
 {
@@ -47,7 +48,13 @@ class HomeController extends Controller
     }
      public function upando(Request $request, $id) {
         /*Pega a model pelo id e coloca tudo que vem pelo request.*/
-        Evento::find($id)->update($request->all());
-        return redirect('/evento');
+        $evento = Evento::find($id)->update($request->all());
+
+        $participar                    = new ParticiparEvento;
+        $participar->user_id           = $request->user()->id;
+        $participar->user_id           = $request->evento()->id;
+        $participar->checking          = false;
+        $participar->save();
+        return view('participar', compact('participar'));
     }
 }
