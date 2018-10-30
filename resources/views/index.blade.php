@@ -40,9 +40,11 @@
 						<div>Fim 		: {{$evento->fim_evento}}</div>
 				<!-- Lista o nome do Autor que está na tabela user o atributo name-->			
 						<div>Autor 	: {{$evento->user_id}}</div>	
-		<!--  Botão que cadastra o usuario na tabela participar --!>
+		<!--  Botão que cadastra o usuario na tabela participar -->
+		 	@can('participa-evento', $evento)
 				<a href="{{url("/evento/{$evento->id}/upando")}}">participar</a><br>
-
+			@endcan
+		
 			<!-- Pega a função de app\Providers\AuthServiceProvider.php
 				 Caso esteja de acordo com o provider ele vai fazer aparecer o que está dentro-->	
 				@can('update-evento', $evento)
